@@ -1,0 +1,5 @@
+name: Rancher EFS
+description: |
+  Docker volume and Flex Vol plugin for EFS
+version: 0.0.1
+category: Storage
