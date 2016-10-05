@@ -1,13 +1,14 @@
 nfs-driver:
   privileged: true
-  image: rancher/storage-nfs:v0.0.1
+  image: rancher/storage-nfs:v0.0.2
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.container.create_agent: 'true'
     io.rancher.container.agent.role: environment
   environment:
-    AWS_SECRET_ACCESS_KEY: '${AWS_SECRET_ACCESS_KEY}'
-    AWS_ACCESS_KEY_ID: '${AWS_ACCESS_KEY_ID}'
+    HOST: '${NFS_SERVER}'
+    EXPORT: '${MOUNT_DIR}'
+    MOUNT_OPTS: '${MOUNT_OPTS}'
   volumes:
   - /run:/run
   - /dev:/host/dev
