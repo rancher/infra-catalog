@@ -48,7 +48,7 @@ proxy:
         - kubernetes
 
 etcd:
-    image: llparse/etcd:v2.3.7-10
+    image: llparse/etcd:v2.3.7-11
     labels:
         io.rancher.scheduler.affinity:host_label_soft: etcd=true
         io.rancher.scheduler.affinity:container_label_ne: io.rancher.stack_service.name=$${stack_name}/$${service_name}
