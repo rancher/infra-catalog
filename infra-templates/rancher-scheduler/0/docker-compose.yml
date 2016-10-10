@@ -1,0 +1,13 @@
+scheduler:
+    image: cjellick/scheduler:dev1-a7d1245
+    command: scheduler
+    labels:
+        io.rancher.container.create_agent: "true"
+        io.rancher.container.agent_service.scheduling: "true"
+    health_check:
+        request_line: GET /healthcheck HTTP/1.0
+        port: 80
+        interval: 2000
+        response_timeout: 2000
+        unhealthy_threshold: 3
+        healthy_threshold: 2
