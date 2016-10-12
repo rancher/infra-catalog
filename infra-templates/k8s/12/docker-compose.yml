@@ -76,7 +76,6 @@ data:
 kubernetes:
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent.role: environmentAdmin
         io.rancher.sidekicks: kube-hostname-updater
@@ -109,7 +108,6 @@ kube-hostname-updater:
 kubectld:
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
         io.rancher.k8s.kubectld: "true"
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent_service.kubernetes_stack: "true"
@@ -128,7 +126,6 @@ scheduler:
     image: wlan0/k8s:v1.4.0-rancher1
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
     links:
         - kubernetes
 
@@ -144,7 +141,6 @@ controller-manager:
     image: wlan0/k8s:v1.4.0-rancher1
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent.role: environmentAdmin
     links:
@@ -153,7 +149,6 @@ controller-manager:
 rancher-kubernetes-agent:
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent_service.labels_provider: "true"
     environment:
@@ -169,7 +164,6 @@ rancher-ingress-controller:
     image: rancher/lb-controller:v0.3.0
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
-        io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
         io.rancher.container.create_agent: "true"
         io.rancher.container.agent.role: environment
     environment:
