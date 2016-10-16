@@ -1,7 +1,7 @@
 ebs-driver:
   privileged: true
   net: host
-  image: rancher/storage-ebs:v0.0.2
+  image: rancher/storage-ebs:v0.0.3
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.container.create_agent: 'true'
@@ -12,6 +12,7 @@ ebs-driver:
   volumes:
   - /run:/run
   - /dev:/host/dev
+  - /var/lib/rancher/volumes:/var/lib/rancher/volumes:shared
   metadata:
     storage_driver:
       name: rancher-ebs
