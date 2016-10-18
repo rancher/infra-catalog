@@ -11,7 +11,7 @@ kubelet:
         - --api_servers=https://kubernetes.kubernetes.rancher.internal:6443
         - --allow-privileged=true
         - --register-node=true
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --healthz-bind-address=0.0.0.0
         - --cluster-dns=169.254.169.250
         - --cluster-domain=cluster.local
@@ -86,7 +86,7 @@ kubernetes:
         - --etcd-servers=http://etcd.kubernetes.rancher.internal:2379
         - --insecure-bind-address=0.0.0.0
         - --insecure-port=80
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --allow_privileged=true
         - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ResourceQuota,ServiceAccount
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
@@ -136,7 +136,7 @@ controller-manager:
     command:
         - kube-controller-manager
         - --master=https://kubernetes.kubernetes.rancher.internal:6443
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --address=0.0.0.0
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
