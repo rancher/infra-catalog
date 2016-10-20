@@ -12,13 +12,13 @@
     type: boolean
   - variable: BACKUP_PERIOD
     label: Backup Creation Period
-    description: Create a backup after this amount of time passes
+    description: Create a backup after this amount of time passes. Must conform to duration format
     required: true
     default: 15m0s
     type: string
   - variable: BACKUP_RETENTION
     label: Backup Retention Period
-    description: Expire a backup after this amount of time passes
+    description: Expire a backup after this amount of time passes. Must conform to duration format
     required: true
     default: 24h
     type: string
