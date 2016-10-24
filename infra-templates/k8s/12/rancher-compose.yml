@@ -1,6 +1,6 @@
 .catalog:
   name: Kubernetes
-  version: v1.4.0-rancher1
+  version: v1.4.4-rancher1
   description: Rancher Kubernetes service
   minimum_rancher_version: v1.2.0-pre4-rc3
   questions:
@@ -22,6 +22,16 @@
     required: true
     default: 24h
     type: string
+  - variable: CLOUD_PROVIDER
+    label: Cloud Provider 
+    description: The cloud provider on which Kubernetes is running
+    required: true
+    default: rancher
+    type: enum
+    options:
+     - rancher
+     - aws
+     - gce
 
 kubernetes:
     metadata:

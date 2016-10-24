@@ -11,13 +11,13 @@ kubelet:
         - --api_servers=https://kubernetes.kubernetes.rancher.internal:6443
         - --allow-privileged=true
         - --register-node=true
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --healthz-bind-address=0.0.0.0
         - --cluster-dns=169.254.169.250
         - --cluster-domain=cluster.local
         - --network-plugin=cni
         - --network-plugin-dir=/etc/cni/net.d
-    image: wlan0/k8s:v1.4.0-rancher1
+    image: rancher/k8s:v1.4.4-rancher1
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         - /var/run:/host/var/run
@@ -41,7 +41,7 @@ proxy:
         - --v=2
         - --healthz-bind-address=0.0.0.0
         - --proxy-mode=userspace
-    image: wlan0/k8s:v1.4.0-rancher1
+    image: rancher/k8s:v1.4.4-rancher1
     privileged: true
     net: host
     links:
@@ -86,7 +86,7 @@ kubernetes:
         - --etcd-servers=http://etcd.kubernetes.rancher.internal:2379
         - --insecure-bind-address=0.0.0.0
         - --insecure-port=80
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --allow_privileged=true
         - --admission-control=NamespaceLifecycle,LimitRanger,SecurityContextDeny,ResourceQuota,ServiceAccount
         - --client-ca-file=/etc/kubernetes/ssl/ca.pem
@@ -94,7 +94,7 @@ kubernetes:
         - --tls-private-key-file=/etc/kubernetes/ssl/key.pem
     environment:
         KUBERNETES_URL: https://kubernetes.kubernetes.rancher.internal:6443
-    image: wlan0/k8s:v1.4.0-rancher1
+    image: rancher/k8s:v1.4.4-rancher1
     links:
         - etcd
 
@@ -125,7 +125,7 @@ scheduler:
         - kube-scheduler
         - --master=http://kubernetes.kubernetes.rancher.internal
         - --address=0.0.0.0
-    image: wlan0/k8s:v1.4.0-rancher1
+    image: rancher/k8s:v1.4.4-rancher1
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
         io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
@@ -136,12 +136,12 @@ controller-manager:
     command:
         - kube-controller-manager
         - --master=https://kubernetes.kubernetes.rancher.internal:6443
-        - --cloud-provider=rancher
+        - --cloud-provider=${CLOUD_PROVIDER}
         - --address=0.0.0.0
         - --kubeconfig=/etc/kubernetes/ssl/kubeconfig
         - --root-ca-file=/etc/kubernetes/ssl/ca.pem
         - --service-account-private-key-file=/etc/kubernetes/ssl/key.pem
-    image: wlan0/k8s:v1.4.0-rancher1
+    image: rancher/k8s:v1.4.4-rancher1
     labels:
         io.rancher.scheduler.affinity:host_label_soft: orchestration=true
         io.rancher.scheduler.affinity:host_label_soft_ne: etcd=true
@@ -158,7 +158,7 @@ rancher-kubernetes-agent:
         io.rancher.container.agent_service.labels_provider: "true"
     environment:
         KUBERNETES_URL: http://kubernetes.kubernetes.rancher.internal
-    image: rancher/kubernetes-agent:v0.3.4
+    image: rancher/kubernetes-agent:v0.3.5
     privileged: true
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
