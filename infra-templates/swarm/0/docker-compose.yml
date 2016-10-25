@@ -1,5 +1,5 @@
 swarmkit-mon:
-  image: rancher/swarmkit:v1.12
+  image: rancher/swarmkit:v1.12-2
   environment:
     MANAGER_SCALE: ${MANAGER_SCALE}
     LISTEN_INTERFACE: ${LISTEN_INTERFACE}
