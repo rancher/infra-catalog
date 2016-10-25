@@ -1,0 +1,17 @@
+zfs-driver:
+  privileged: true
+  image: mcanevet/storage-zfs:v0.0.2
+  labels:
+    io.rancher.scheduler.global: 'true'
+    io.rancher.container.create_agent: 'true'
+    io.rancher.container.agent.role: environment
+  environment:
+    ZPOOL_NAME: '${ZPOOL_NAME}'
+  volumes:
+  - /run:/run
+  - /dev:/host/dev
+  metadata:
+    storage_driver:
+      name: rancher-zfs
+      scope: local
+      volumeAccessMode: singleHostRW

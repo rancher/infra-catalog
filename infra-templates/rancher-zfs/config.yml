@@ -1,0 +1,5 @@
+name: Rancher ZFS
+description: |
+  Docker volume plugin for ZFS
+version: 0.0.1
+category: Storage

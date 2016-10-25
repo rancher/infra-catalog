@@ -1,0 +1,11 @@
+.catalog:
+  name: "Rancher ZFS"
+  version: "0.0.1"
+  description: |
+    Docker volume plugin for ZFS
+  minimum_rancher_version: "v1.1.999"
+  questions:
+  - variable: ZPOOL_NAME
+    label: Zpool Name
+    type: string
+    description: Zpool to use (must be mounted on /var/lib/docker/volumes)
