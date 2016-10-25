@@ -2,6 +2,7 @@ efs-driver:
   privileged: true
   net: host
   image: rancher/storage-efs:v0.0.2
+  pid: host
   labels:
     io.rancher.scheduler.global: 'true'
     io.rancher.container.create_agent: 'true'
