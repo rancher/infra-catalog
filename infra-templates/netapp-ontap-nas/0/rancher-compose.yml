@@ -15,7 +15,7 @@
       description: "Enable debugging output in logs"
       label: "Debug Logging"
       required: false
-      default: true
+      default: false
       type: "boolean"
 
     # ONTAP-NAS settings
