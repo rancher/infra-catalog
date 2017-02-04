@@ -95,7 +95,7 @@
       default: "netapp"
       type: "string"
 
-ndvp-eseries-iscsi-server:
+netapp-eseries:
   labels:
     io.rancher.scheduler.global: 'true'
   metadata:

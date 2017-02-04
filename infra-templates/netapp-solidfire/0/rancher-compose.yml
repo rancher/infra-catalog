@@ -62,7 +62,7 @@
       default: "netapp"
       type: "string"
 
-ndvp-solidfire-san-server:
+netapp-solidfire:
   labels:
     io.rancher.scheduler.global: 'true'
   metadata:
